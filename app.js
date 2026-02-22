@@ -7,7 +7,7 @@ const App = {
             currentIndex: 0,
             correct: 0,
             wrongCards: [],
-            mode: 'jp-th'
+            mode: 'jp-kor'
         }
     },
     settings: {
@@ -487,7 +487,7 @@ const App = {
             `;
             a.addEventListener('click', () => {
                 const modeSelect = document.getElementById('quizModeSelect');
-                const mode = modeSelect ? modeSelect.value : 'jp-th';
+                const mode = modeSelect ? modeSelect.value : 'jp-kor';
                 window.location.hash = `#/quiz?genre=${encodeURIComponent(value)}&mode=${mode}`;
             });
             listEl.appendChild(a);
@@ -515,7 +515,7 @@ const App = {
     // --- Quiz Logic ---
 
     renderQuiz(params) {
-        let mode = document.getElementById('quizModeSelect') ? document.getElementById('quizModeSelect').value : 'jp-th';
+        let mode = document.getElementById('quizModeSelect') ? document.getElementById('quizModeSelect').value : 'jp-kor';
         // Check if mode was passed through URL params (e.g., from result screen)
         if (params.get('mode')) mode = params.get('mode');
 
@@ -578,13 +578,13 @@ const App = {
             const ansEl = document.getElementById('qAnswerContainer');
             const tarEl = document.getElementById('qAnswer');
 
-            if (this.data.currentQuiz.mode === 'jp-th') {
+            if (this.data.currentQuiz.mode === 'jp-kor') {
                 // Just show the target text
                 tarEl.textContent = c.target_text;
                 tarEl.classList.add('kor-font', 'text-2xl', 'text-primary');
                 ansEl.style.visibility = 'visible';
             } else {
-                // th-jp mode hint: Show pronunciation below the prompt, beautifully.
+                // kor-jp mode hint: Show pronunciation below the prompt, beautifully.
                 const promptHintEl = document.getElementById('qPromptHint');
                 promptHintEl.textContent = `💡 ヒント: ${c.pronunciation || '発音記号がありません'}`;
                 promptHintEl.style.display = 'block';
@@ -599,7 +599,7 @@ const App = {
             const ansEl = document.getElementById('qAnswerContainer');
             const tarEl = document.getElementById('qAnswer');
 
-            if (this.data.currentQuiz.mode === 'jp-th') {
+            if (this.data.currentQuiz.mode === 'jp-kor') {
                 tarEl.textContent = c.target_text;
                 tarEl.classList.add('kor-font', 'text-2xl', 'text-primary');
                 tarEl.classList.remove('text-lg', 'text-muted');
@@ -708,7 +708,7 @@ const App = {
         const promptLabelEl = document.getElementById('qPromptLabel');
         const answerLabelEl = document.getElementById('qAnswerLabel');
 
-        if (cq.mode === 'jp-th') {
+        if (cq.mode === 'jp-kor') {
             promptLabelEl.textContent = '日本語';
             promptEl.textContent = c.native_text;
             promptEl.className = 'native-text text-xl';
