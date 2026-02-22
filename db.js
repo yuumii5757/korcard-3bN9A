@@ -1,6 +1,6 @@
 class Database {
     constructor() {
-        this.dbName = 'ThaiCardDB';
+        this.dbName = 'KorCardDB';
         this.dbVersion = 1;
         this.storeName = 'cards';
         this.db = null;
